@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.dh.lojaonline.model.entities.Cliente;
@@ -33,6 +34,16 @@ public class ClienteController {
 	@GetMapping("/{id}")
 	public Optional<Cliente> getById(@PathVariable int id) {
 		return clienteRepository.findById(id);
+	}
+	
+	@GetMapping("/nome")
+	public Cliente getByName(@RequestParam String nome) {
+		return clienteRepository.findOneByNome(nome);
+	}
+	
+	@GetMapping("/nomelike")
+	public List<Cliente> getByNameLike(@RequestParam String nome) {
+		return clienteRepository.encontrarNomeParecido(nome);
 	}
 	
 	@PostMapping()
