@@ -17,7 +17,7 @@ import br.com.dh.jwt.services.JwtService;
 import br.com.dh.jwt.services.UsuarioServiceImpl;
 
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
     private UsuarioServiceImpl usuarioService;
     @Autowired
